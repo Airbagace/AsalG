@@ -1,0 +1,95 @@
+/* --- ASAL GUJARAT: GRAND UTSAV THEME (FINAL) --- */
+        
+:root {
+    --bg-color: #FFF2D7; /* Warm Cream */
+    --text-dark: #4C3F3F;
+    --primary-orange: #F39C12;
+    --primary-red: #E74C3C;
+    --accent-gold: #FFD700;
+    --border-color: #D1BFA4;
+    
+    --font-heading: 'Baloo Bhai 2', cursive;
+    --font-body: 'Poppins', sans-serif;
+}
+
+body {
+    font-family: var(--font-body);
+    background: linear-gradient(135deg, #FFDAB9 0%, var(--bg-color) 100%);
+    color: var(--text-dark);
+    overflow: hidden;
+}
+
+#welcome-screen {
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+}
+
+/* --- ADVANCED ANIMATIONS & ASSETS --- */
+.parallax-container { perspective: 100px; }
+.parallax-layer { position: absolute; inset: 0; transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1); }
+#background-rangoli-container svg { position: absolute; top: 50%; left: 50%; width: 150vmax; height: 150vmax; transform: translate(-50%, -50%); opacity: 0.05; animation: slow-spin 180s linear infinite; }
+#temple-silhouette { position: absolute; bottom: 0; width: 100%; height: auto; opacity: 0.1; }
+@keyframes slow-spin { 100% { transform: translate(-50%, -50%) rotate(360deg); } }
+
+.floating-asset { position: absolute; animation: floatUp 20s linear infinite; opacity: 0; z-index: 0;}
+@keyframes floatUp {
+    0% { transform: translateY(10vh) scale(0.8) rotate(0deg); opacity: 0; }
+    10%, 90% { opacity: 0.7; }
+    100% { transform: translateY(-120vh) scale(1.2) rotate(360deg); opacity: 0; }
+}
+
+/* Draggable & Interactive Assets */
+.draggable-asset { cursor: grab; transition: transform 0.3s ease, box-shadow 0.3s ease; user-select: none; will-change: transform; }
+.draggable-asset:hover { transform: scale(1.15); filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3)); }
+.draggable-asset.dragging { cursor: grabbing; transform: scale(1.2); z-index: 100; transition: none; filter: drop-shadow(0 20px 25px rgba(0,0,0,0.4)); }
+
+.dandiya-container.hit .dandiya-1 { animation: hit-left 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55); }
+.dandiya-container.hit .dandiya-2 { animation: hit-right 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55); }
+@keyframes hit-left { 50% { transform: rotate(-15deg); } }
+@keyframes hit-right { 50% { transform: rotate(15deg); } }
+
+.rangoli-spin-group.spin { transform-origin: center; animation: spin-fast 1s cubic-bezier(0.68, -0.55, 0.27, 1.55); }
+@keyframes spin-fast { 100% { transform: rotate(360deg); } }
+
+.bindi-palette { cursor: pointer; border: 2px dashed var(--primary-orange); transition: all 0.2s ease; user-select: none; background: rgba(255,255,255,0.1); backdrop-filter: blur(5px); }
+.bindi-palette:hover, .bindi-palette.active { border-style: solid; background: rgba(243,156,18,0.2); transform: scale(1.1); }
+.placed-bindi { position: absolute; width: 12px; height: 12px; background: #2c2222; border-radius: 50%; box-shadow: 0 0 8px rgba(0,0,0,0.5); pointer-events: none; transform: translate(-50%, -50%); animation: placeBindi 0.3s cubic-bezier(0.2, 0.8, 0.2, 1.2); z-index: 99; }
+@keyframes placeBindi { from { transform: translate(-50%, -50%) scale(0); } to { transform: translate(-50%, -50%) scale(1); } }
+
+.garba-dancer { position: absolute; bottom: 0; width: 100px; height: 100px; animation: dance 4s infinite ease-in-out; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.2)); }
+@keyframes dance { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-10px) rotate(5deg); } }
+
+/* Cursor Trail */
+.trail { position: fixed; background: var(--accent-gold); border-radius: 50%; pointer-events: none; animation: fadeOut 0.5s forwards; z-index: 10000; }
+@keyframes fadeOut { to { opacity: 0; transform: scale(0); } }
+
+/* Cinematic Entrance Animations */
+#animated-title, #subtitle, #start-btn, .asset-container { opacity: 0; will-change: transform, opacity; }
+.loaded #animated-title { animation: bounceIn 1s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.2s forwards; }
+.loaded #subtitle { animation: bounceIn 1s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.5s forwards; }
+.loaded #start-btn { animation: bounceIn 1s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.8s forwards; }
+.loaded .asset-container { animation: bounceIn 1s cubic-bezier(0.68, -0.55, 0.27, 1.55) var(--delay, 1s) forwards; }
+@keyframes bounceIn { 0% { opacity: 0; transform: scale(0.3) translateY(50px); } 50% { transform: scale(1.1) translateY(0); } 100% { opacity: 1; transform: scale(1); } }
+
+/* UI Elements Styling */
+#animated-title { color: var(--primary-red); text-shadow: 3px 3px 0px var(--primary-orange), 6px 6px 0px rgba(0,0,0,0.1); position: relative; }
+#animated-title::after { content: ''; position: absolute; top:0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); animation: shimmer 5s infinite ease-in-out 2s; }
+@keyframes shimmer { 100% { left: 100%; } }
+
+#subtitle { text-shadow: 1px 1px 2px rgba(255,255,255,0.2); }
+.btn-utsav { background: linear-gradient(180deg, var(--accent-gold) 0%, var(--primary-orange) 100%); border: 2px solid #a16207; color: #412207; text-shadow: 1px 1px 0px rgba(255,255,255,0.4); box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); transition: all 0.15s ease-out; }
+.btn-utsav:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); }
+.btn-utsav:active { transform: translateY(0) scale(1); }
+.btn-utsav:disabled { background: #555; border-color: #777; color: #aaa; cursor: not-allowed; transform: none; box-shadow: none; opacity: 0.6;}
+
+/* Loader */
+.advanced-loader { position: fixed; inset: 0; background: linear-gradient(135deg, #FFDAB9 0%, var(--bg-color) 100%); display: none; flex-direction: column; align-items: center; justify-content: center; z-index: 50; transition: opacity 0.5s ease-out; padding: 1rem; color: var(--text-dark); opacity: 0;}
+.loader-spinner { border: 4px solid var(--border-color); border-top: 4px solid var(--primary-red); border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin-bottom: 1.5rem; }
+#loader-fact-title { font-family: var(--font-heading); color: var(--primary-red); font-size: 1.25rem; margin-bottom: 0.5rem; }
+@keyframes spin { 100% { transform: rotate(360deg); } }
+
+/* App Container Styling */
+#info-panel { background-color: var(--bg-color); border-color: var(--primary-orange); }
+#experience-title { color: var(--primary-red); }
+#step-counter { color: var(--border-color); }

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>AsalGuj</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@700;800&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script><link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div id="experience-container" class="h-screen w-screen overflow-hidden">
+    <div id="cursor-trail-container"></div>
+
+    <div id="welcome-screen" class="relative flex flex-col items-center justify-center text-center h-full p-6 sm:p-8">
+        <div class="parallax-container absolute inset-0 pointer-events-none">
+            <div class="parallax-layer layer-1" id="background-rangoli-container"></div>
+            <div class="parallax-layer layer-2" id="floating-asset-container"></div>
+            <div class="parallax-layer layer-3">
+                <svg id="temple-silhouette" viewBox="0 0 1000 300"><path d="M0 300 L 0 250 C 50 230, 80 150, 150 150 S 250 230, 300 250 L 300 300 Z M350 300 L 350 220 C 400 200, 420 80, 500 80 S 600 200, 650 220 L 650 300 Z M700 300 L 700 250 C 750 230, 780 150, 850 150 S 950 230, 1000 250 L 1000 300 Z" fill="#E74C3C" opacity="0.1"></path></svg>
+            </div>
+        </div>
+
+        <div id="dandiya-interactive" class="draggable-asset w-24 h-24 absolute top-8 right-8 z-20" title="Drag Me!">
+            <svg viewBox="0 0 100 100">
+                <g class="dandiya-1" style="transform-origin: 10% 90%;"><path d="M10 90 L70 30" stroke="#c0392b" stroke-width="8" stroke-linecap="round"></path></g>
+                <g class="dandiya-2" style="transform-origin: 90% 90%;"><path d="M30 30 L90 90" stroke="#f1c40f" stroke-width="8" stroke-linecap="round"></path></g>
+            </svg>
+        </div>
+        <div id="rangoli-interactive" class="draggable-asset w-24 h-24 absolute top-8 left-8 z-20" title="Drag Me!">
+            <svg viewBox="0 0 100 100">
+                <g class="rangoli-spin-group">
+                    <circle class="rangoli-part-3" cx="50" cy="50" r="45" fill="none" stroke-width="3"/>
+                    <path class="rangoli-part-1" d="M50,15 A35,35 0 1,1 50,85 A35,35 0 1,1 50,15 M50,25 A25,25 0 1,0 50,75 A25,25 0 1,0 50,25 Z"/>
+                    <circle class="rangoli-part-2" cx="50" cy="50" r="15"/>
+                    <g class="rangoli-part-2"><circle cx="50" cy="20" r="5"/><circle cx="80" cy="35" r="5"/><circle cx="80" cy="65" r="5"/><circle cx="50" cy="80" r="5"/><circle cx="20" cy="65" r="5"/><circle cx="20" cy="35" r="5"/></g>
+                </g>
+            </svg>
+        </div>
+        
+        <div class="z-10 max-w-xl mx-auto">
+            <h1 id="animated-title" class="font-heading text-5xl sm:text-6xl md:text-8xl mb-2">Asal Gujarat</h1>
+            <p id="subtitle" class="font-body text-base sm:text-lg text-gray-800 mb-8">An interactive AR journey through Gujarat's festive culture. Drag the assets, place some bindis, and begin your adventure!</p>
+            <button id="start-btn" class="font-heading text-xl btn-utsav font-bold py-3 px-10 rounded-full">Start Exploring</button>
+        </div>
+        
+        <div class="absolute bottom-4 left-4 z-20">
+             <div id="bindi-palette" class="bindi-palette w-16 h-16 rounded-full flex items-center justify-center flex-col p-1" title="Activate Bindi Mode">
+                <span class="font-heading text-xs">Bindi</span>
+                <div class="w-4 h-4 bg-gray-900 rounded-full mt-1"></div>
+            </div>
+        </div>
+        <div id="dancer-container" class="absolute inset-x-0 bottom-0 h-48 pointer-events-none z-0"></div>
+    </div>
+
+    <div id="app-container" class="hidden flex-col h-full w-full">
+        <div class="flex-grow relative p-2 bg-black">
+            <iframe id="ar-iframe" class="w-full h-full border-none" style="opacity: 0; transition: opacity 0.5s ease-in-out;" allow="camera; microphone; accelerometer; gyroscope"></iframe>
+        </div>
+        <div id="info-panel" class="p-4 border-t-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 id="experience-title" class="font-heading text-2xl"></h2>
+                <p id="experience-description" class="font-body text-sm mt-1 mb-4"></p>
+                <div class="flex justify-between items-center">
+                    <button id="prev-btn" class="font-heading text-lg btn-utsav font-bold py-2 px-6 rounded-full">Previous</button>
+                    <span id="step-counter" class="font-body text-sm font-medium"></span>
+                    <button id="next-btn" class="font-heading text-lg btn-utsav font-bold py-2 px-6 rounded-full">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="loader-overlay" class="advanced-loader">
+        <div class="loader-spinner"></div>
+        <div id="loader-fact-container" class="text-center max-w-xs">
+            <h3 id="loader-fact-title" class="font-heading text-xl mb-2">Did You Know?</h3>
+            <p id="loader-fact-text" class="text-sm"></p>
+        </div>
+    </div>
+</div>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
